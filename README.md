@@ -67,7 +67,7 @@ In this pattern, we will be sending all the speed related offences to `abc` orgi
 
 **QRadar-Resilient Integration Application**
 
-* The QRadar-Resilient Integration Application sources are present in the folder `Java` of the repo.
+* The QRadar-Resilient Integration Application sources are present in the folder `Java/integrate` of the repo.
 * Check your environment before executing the next step. Make sure, you are able to run `mvn` commands properly.
    > If `mvn` commands fails, please refer to [Pre-requisites](#pre-requisites) to install maven.
 
@@ -88,9 +88,9 @@ To work with the QRadar-Resilient Integration Application, perform the following
    cp QRadar-Resilient-0.0.1-SNAPSHOT-jar-with-dependencies.jar QRadar-Resilient.jar
    ```
   
-**Send Offences Application**
+**Offences Application**
 
-* The QRadar-Resilient Integration Application sources are present in the folder `Java` of the repo.
+* The Offences Application sources are present in the folder `Java/offences` of the repo.
 * Check your environment before executing the next step. Make sure, you are able to run `mvn` commands properly.
    > If `mvn` commands fails, please refer to [Pre-requisites](#pre-requisites) to install maven.
 
