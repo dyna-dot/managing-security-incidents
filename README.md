@@ -1,15 +1,17 @@
-# Integrating Resilient IRP with IBM QRadar SIEM using Java Rest API's
+# Integrating Resilient IRP with IBM QRadar SIEM using Rest API's
 
-In this Code Pattern, we will be integrating IBM Resilient Incident Response Platform (IRP) with IBM QRadar Security information and event management (SIEM) using Java Rest API's. Today’s security information and event management systems (SIEM) operate with a more extensive knowledge base than their predecessors, and they are more useful in detecting and logging data than ever before—but they are never more powerful than when they are paired with a incident response (IR) platform.By integrating the Resilient Incident Response Platform (IRP) with IBM QRadar, security teams are empowered to simplify and streamline the process of escalating and managing incidents.
+In this Code Pattern, we will be integrating `IBM Resilient Incident Response Platform (IRP)` with `IBM QRadar Security information and event management (SIEM)` using Rest API's. Today’s security information and event management systems (SIEM) operate with a more extensive knowledge base than their predecessors, and they are more useful in detecting and logging data than ever before—but they are never more powerful than when they are paired with a incident response (IR) platform.By integrating the Resilient Incident Response Platform (IRP) with IBM QRadar, security teams are empowered to simplify and streamline the process of escalating and managing incidents.
+In this Code Pattern, we will showcase a methodology in which we will be creating `speed` and `location` related offences on IBM QRadar which will later be sent to `abc` and `xyz` organization on IBM Resilient Incident Response Platform respectively, using our `QRadar-Resilient Integration` Application.
+
 
 When the reader has completed this Code Pattern, they will understand how to:
 
-* Access the offences from IBM QRadar using Java Rest API.
-* Create incidents on IBM Resilient using Java Rest API.
+* Access the offences from IBM QRadar using Rest API.
+* Create incidents on IBM Resilient using Rest API.
 * Send offences from QRadar to their respective organizations on Resilient.
 
 <!--add an image in this path-->
-![](images/Architecture.png)
+![](doc/source/images/Architecture.png)
 
 <!--Optionally, add flow steps based on the architecture diagram-->
 ## Flow
@@ -25,7 +27,8 @@ When the reader has completed this Code Pattern, they will understand how to:
 
 * [IBM QRadar Community Edition](https://developer.ibm.com/qradar/ce/): IBM is bringing free QRadar to a wider audience with Community Edition. Community Edition is a fully-featured version of QRadar that is low memory, low EPS, and includes perpetual license.
 * [IBM Resilient](https://www.resilientsystems.com/): IBM Resilient Incident Response Platform (IRP) is the leading platform for orchestrating and automating incident response processes.
-* [Maven](http://maven.apache.org/download.cgi) - needed to build the client. Maven is a build automation tool used primarily for Java projects. Maven addresses two aspects of building software: first, it describes how software is built, and second, it describes its dependencies.
+* [Maven](http://maven.apache.org/download.cgi) - needed to build the client. Maven is a build automation tool used primarily for 
+projects. Maven addresses two aspects of building software: first, it describes how software is built, and second, it describes its dependencies.
 
 # Steps
 
@@ -38,10 +41,10 @@ Please follow the below to setup and run this code pattern.
 
 ### 1. Clone the repo
 
-Clone the `Integrating Resilient IRP with IBM QRadar SIEM using Java Rest API's` repo locally. In a terminal, run:
+Clone the `Integrating Resilient IRP with IBM QRadar SIEM using Rest API's` repo locally. In a terminal, run:
 
 ```
-$ git clone https://github.ibm.com/raravi86/Integration
+$ git clone https://github.com/IBM/managing-security-incidents
 ```
 
 We’ll be using the folder [`Java/`](Java/)
@@ -60,11 +63,10 @@ sudo resutil newuser -createorg -email "username@company.com" -first "Rxxxx" -la
 ```
 In this pattern, we will be sending all the speed related offences to `abc` orginzation and location reated offences to `xyz` organization.
 
-> **Note:** If you dont know to create offences on QRadar, please refer to  [Monitor device events using QRadar](https://developer.ibm.com/patterns/detect-security-offenses-for-iot-devices-using-qradar/)
-
-### 3. Build the QRadar-Resilient Integration Application using Maven
+### 3. Build the Applications using Maven
 
 **QRadar-Resilient Integration Application**
+
 * The QRadar-Resilient Integration Application sources are present in the folder `Java` of the repo.
 * Check your environment before executing the next step. Make sure, you are able to run `mvn` commands properly.
    > If `mvn` commands fails, please refer to [Pre-requisites](#pre-requisites) to install maven.
@@ -72,18 +74,41 @@ In this pattern, we will be sending all the speed related offences to `abc` orgi
 
 To work with the QRadar-Resilient Integration Application, perform the following steps.
 
-* Open a command terminal and navigate to the `java` directory in the repo. Run the command `mvn install`.
+* Open a command terminal and navigate to the `java/integrate` directory in the repo. Run the command `mvn install`.
 
    ```
-   cd ../java
+   cd ../java/integrate
    mvn install
    ```
 
-* A jar file `integrate-0.0.1-SNAPSHOT-jar-with-dependencies.jar` is built and can be found under the `target` folder. This jar can be renamed to `QRadar-Resilient.jar` to keep the name short. 
+* A jar file `QRadar-Resilient-0.0.1-SNAPSHOT-jar-with-dependencies.jar` is built and can be found under the `target` folder. This jar can be renamed to `QRadar-Resilient.jar` to keep the name short. 
 
    ```
    cd target
-   cp integrate-0.0.1-SNAPSHOT-jar-with-dependencies.jar QRadar-Resilient.jar
+   cp QRadar-Resilient-0.0.1-SNAPSHOT-jar-with-dependencies.jar QRadar-Resilient.jar
+   ```
+  
+**Send Offences Application**
+
+* The QRadar-Resilient Integration Application sources are present in the folder `Java` of the repo.
+* Check your environment before executing the next step. Make sure, you are able to run `mvn` commands properly.
+   > If `mvn` commands fails, please refer to [Pre-requisites](#pre-requisites) to install maven.
+
+
+To work with the QRadar-Resilient Integration Application, perform the following steps.
+
+* Open a command terminal and navigate to the `java/offences` directory in the repo. Run the command `mvn install`.
+
+   ```
+   cd ../java/offences
+   mvn install
+   ```
+
+* A jar file ` offences-0.0.1-SNAPSHOT-jar-with-dependencies.jar` is built and can be found under the `target` folder. This jar can be renamed to `offences.jar` to keep the name short. 
+
+   ```
+   cd target
+   cp  offences-0.0.1-SNAPSHOT-jar-with-dependencies.jar offences.jar
    ```
    
 ### 4. Deploy and Run the Application
@@ -91,7 +116,7 @@ To work with the QRadar-Resilient Integration Application, perform the following
  To deploy and run the application, execute the following command from the target directory(directory where the QRadar-Resilient.jar file is located).
 
    ```
-   java -cp QRadar-Resilient.jar  integration.integrate.Task
+   java -cp QRadar-Resilient.jar org.app.integrate.Task
    ```
    Output:
    
@@ -160,7 +185,7 @@ This Application works dynamically.It checks for new offences at regular interva
 
 Watch the [video](#watch-the-video) for the live demo.
   
-Please check [`Java/src/main/java/integration/integrate/Resilient.java`](Java/src/main/java/integration/integrate/Resilient.java) and [`Java/src/main/java/integration/integrate/QRadar.java`](Java/src/main/java/integration/integrate/QRadar.java) to add a new offence source and its respective Resilient organization.
+Please check [`Java/integrate/src/main/java/org/app/integrate/Resilient.java`](Java/integrate/src/main/java/org/app/integrate/Resilient.java) and [`Java/integrate/src/main/java/org/app/integrate/QRadar.java`](Java/integrate/src/main/java/org/app/integrate/QRadar.java) to add a new offence source and its respective Resilient organization.
   
 
 ## Troubleshooting
