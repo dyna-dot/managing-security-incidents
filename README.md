@@ -36,8 +36,9 @@ Please follow the below to setup and run this code pattern.
 
 1. [Clone the repo](#1-clone-the-repo)
 2. [Create organizations on Resilient](#2-create-organizations-on-resilient)
-3. [Build the QRadar-Resilient Integration Application using Maven](#3-build-the-qradar-resilient-integration-application-using-maven)
-4. [Deploy and Run the Application](#4-deploy-and-run-the-application)
+3. [Create rules to detect offences on QRadar](#3-create-rules-to-detect-offences-on-QRadar)
+4. [Build the QRadar-Resilient Integration Application using Maven](#4-build-the-qradar-resilient-integration-application-using-maven)
+5. [Deploy and Run the Application](#5-deploy-and-run-the-application)
 
 ### 1. Clone the repo
 
@@ -63,7 +64,94 @@ sudo resutil newuser -createorg -email "username@company.com" -first "Rxxxx" -la
 ```
 In this pattern, we will be sending all the speed related offences to `abc` orginzation and location reated offences to `xyz` organization.
 
-### 3. Build the Applications using Maven
+### 3. Create rules to detect offences on QRadar
+
+**Setup QRadar for detecting speed and location related offences**
+
+* Open the `QRadar Console` from a browser. From the menu, select `Admin` to go to the `Admin` view.
+
+![](doc/source/images/QRadarCE_Access_Admin.png)
+
+* Scroll down to the `Data sources` section and select `Log Sources`.
+![](doc/source/images/QRadarCE_Access_LogSources.png)
+
+* Click on `Add` to add a new log source.
+
+![](doc/source/images/QRadarCE_Click_AddLogSource.png)
+
+* Configure the log source with the values shown. Click on `Save`.
+
+![](doc/source/images/QRadarCE_ConfigureLogSource.png)
+
+* In the `Admin` view, click on `Deploy changes` to add the newly configured log source.
+
+![](doc/source/images/QRadarCE_Click_DeployChanges.png)
+
+* Go to `Log Activity` view.
+
+![](doc/source/images/QRadarCE_Click_LogActivity.png)
+
+* Go to the `Rules` view by clicking on `Rules` menu.
+
+![](doc/source/images/QRadarCE_Click_Rules.png)
+
+* Select `Actions` and then `New Common Rule`.
+
+![](doc/source/images/QRadarCE_AddNewCommonRule.png)
+
+* The rule wizard opens. Click `Next`.
+
+![](doc/source/images/QRadarCE_RuleWizard_2.png)
+
+* Select `Events or flows`. Click `Next`.
+
+![](doc/source/images/QRadarCE_RuleWizard_3.png)
+
+* On the `Rule Test Stack Editor`, enter a filter keyword `payload`.
+
+![](doc/source/images/QRadarCE_RuleWizard_4.png)
+
+* Select the rule `When the Flow Source or Destination Payload contains this string`. Enter the rule name as `speed violation` while creating rule to detect speed offence and `wrong location` while creating rule to detect location offence. Click on the hyperlink `this string` as shown.
+
+![](doc/source/images/QRadarCE_RuleWizard_5.png)
+
+* Enter the string as `SPEEDING` while creating rule to detect speed offence and  `LOCATION` while creating rule to detect location offence. This is the string that we will send in the payload. Click `Submit`.
+
+![](doc/source/images/QRadarCE_RuleWizard_6.png)     
+
+![](doc/source/images/QRadarCE_RuleWizard_61.png)
+
+* Select the group as `Policy`.
+
+![](doc/source/images/QRadarCE_RuleWizardPolicy.png)
+
+* Click `Next`.
+
+![](doc/source/images/QRadarCE_RuleWizard_7.png)
+
+* On the `Rule Response` page,
+  
+  **while creating rule to detect speed offence**, enter the values as shown. Click `Next`.
+
+![](doc/source/images/QRadarCE_RuleWizard8.png)
+
+   **while creating rule to detect location offence**, enter the values as shown. Click `Next`.
+
+![](doc/source/images/QRadarCE_RuleWizard_9.png)
+
+* Click `Finish` on the `Rule summary` page.
+
+![](doc/source/images/QRadarCE_RuleWizard_11.png)
+
+* The newly created rule has been added to the list of rules.
+
+![](doc/source/images/QRadarCE_RuleWizard_12.png)
+
+You have successfully created rules to detect `speed` and `location` related offences. Now you are ready to send events and offences to QRadar.
+
+>>NOTE: Please refer to [Monitor device events using QRadar](https://developer.ibm.com/patterns/detect-security-offenses-for-iot-devices-using-qradar/) for more information on rules and offences.
+
+### 4. Build the Applications using Maven
 
 **QRadar-Resilient Integration Application**
 
@@ -111,14 +199,33 @@ To work with the QRadar-Resilient Integration Application, perform the following
    cp  offences-0.0.1-SNAPSHOT-jar-with-dependencies.jar offences.jar
    ```
    
-### 4. Deploy and Run the Application
+### 5. Deploy and Run the Application
 
- To deploy and run the application, execute the following command from the target directory(directory where the QRadar-Resilient.jar file is located).
+ * First let us create a speed related offence on QRadar,by execute the following command from the target directory(directory where the offences.jar file is located).
+ 
+   ```
+   java -cp offences.jar org.app.offences.SendOffences
+   ```
+   Enter your QRadar Hostname/IP Address and enter 1 to sent speed related offence,
+  
+   Output: 
+
+      ``` 
+      >>>Enter the QRadar Hostname/IP Address
+      192.168.xxx.xxx
+      >>>Enter 1 to send SPEED related offence.
+      >>>Enter 2 to send LOCATION related offence.
+      1
+      Offence successfully sent
+      ```
+   Go to `offences` tab on QRadar to check if the offence is created.  
+
+ * To deploy and run the QRadar-Resilient Integration application, execute the following command from the target directory(directory where the QRadar-Resilient.jar file is located).
 
    ```
    java -cp QRadar-Resilient.jar org.app.integrate.Task
    ```
-   Output:
+   Output: 
    
    ```
 >>>Enter your QRadar username:
@@ -145,8 +252,10 @@ Waiting for new offences
 Waiting for new offences
 Waiting for new offences
    ```
-Now after a Location based offence is detected in QRadar,the output looks like:
+   
+Now just to make sure our application runs dynamically lets send a Location based offence. After the Location based offence is detected in QRadar,the output looks like:
 
+   Output:
    ```
 >>>Enter your QRadar username:
 admin
