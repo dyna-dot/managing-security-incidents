@@ -147,10 +147,10 @@ public class Resilient {
 			Object obj = parser.parse(z);
 			JSONObject jnew = (JSONObject) obj;
 			orgname = jnew.get("object_name").toString();
-			if (name.equals("speeding violation") && orgname.equals("ibm")) {
+			if (name.equals("speeding violation") && orgname.equals("abc")) {
 				orgID = orgid;
 				orgNAME = orgname;
-			} else if (name.equals("wrong location") && orgname.equals("isl")) {
+			} else if (name.equals("wrong location") && orgname.equals("xyz")) {
 				orgID = orgid;
 				orgNAME = orgname;
 			}
