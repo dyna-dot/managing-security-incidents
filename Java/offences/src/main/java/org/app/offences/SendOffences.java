@@ -52,11 +52,11 @@ public class SendOffences {
 			switch (choice) {
 			case 1:
 				messageSender.sendMessage("CARNUMBER: \"KA00MA1234\" SPEED: \"180KMPH\" VIOLATION: \"SPEEDING\"");
-				System.out.println("Message sent");
+				System.out.println("Offence successfully sent");
 				break;
 			case 2:
 				messageSender.sendMessage("DEVICE ID: \"1234\" LOCATION: \"lat:0/long:0\" VIOLATION: \"LOCATION\"");
-				System.out.println("Message sent ");
+				System.out.println("Offence successfully sent ");
 				break;
 			default:
 				System.out.println("Invalid input");
