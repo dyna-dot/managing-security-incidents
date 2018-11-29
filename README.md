@@ -206,7 +206,7 @@ To work with the QRadar-Resilient Integration Application, perform the following
    ```
    java -cp offences.jar org.app.offences.SendOffences
    ```
-   Enter your QRadar Hostname/IP Address and enter 1 to sent speed related offence,
+   Fill in your QRadar Hostname/IP Address and enter 1 to sent speed related offence,
   
    Output: 
 
@@ -225,37 +225,37 @@ To work with the QRadar-Resilient Integration Application, perform the following
    ```
    java -cp QRadar-Resilient.jar org.app.integrate.Task
    ```
-   Output: 
+   Output on terminal: 
    
    ```
->>>Enter your QRadar username:
-admin
->>>Enter your QRadar password:
-xxxxxxxxx
->>>Enter your QRadar hostname/IP Address:
-192.168.xxx.xxx
->>>Enter your Resilient email:
-username@company.com
->>>Enter your Resilient password:
-xxxxxxxxxx
->>>Enter your Resilient hostname/IP Address:
-192.168.xxx.xxx
+    >>>Enter your QRadar username:
+    admin
+    >>>Enter your QRadar password:
+    xxxxxxxxx
+    >>>Enter your QRadar hostname/IP Address:
+    192.168.xxx.xxx
+    >>>Enter your Resilient email:
+    username@company.com
+    >>>Enter your Resilient password:
+    xxxxxxxxxx
+    >>>Enter your Resilient hostname/IP Address:
+    192.168.xxx.xxx
 
-PREPARING TO SEND THE OFFENCE : {"security_category_count":1,"source_count":1,"event_count":1,"description":"The vechile has exceeded the speed limit of 100kmph\n","offense_type":2,"local_destination_count":1,"follow_up":false,"domain_id":0,"inactive":true,"protected":false,"closing_user":null,"offense_source":"speeding violation","source_address_ids":[2],"credibility":3,"magnitude":3,"source_network":"Net-xx-xxx-xxx.Net_192_168_0_0","id":5,"categories":["Unknown"],"closing_reason_id":null,"device_count":1,"assigned_to":null,"severity":5,"local_destination_address_ids":[2],"close_time":null,"policy_category_count":0,"relevance":5,"destination_networks":["Net-xx-xxx-xxx.Net_192_168_0_0"],"remote_destination_count":0,"start_time":1542863188789,"flow_count":0,"last_updated_time":1542863188789,"category_count":1,"username_count":0,"status":"OPEN"}
-Response Code : 200
-Incident Response Code : 200
-SENT THE OFFENCE WITH ID : 1 TO RESILIENT
-INCIDENT CREATED IN  ORG : abc ( ORG ID : 206) WITH ID : 2230
-Successfully sent offence id 1 to resilient
-Offence ID's that are sent to resilient : [1]
-Waiting for new offences
-Waiting for new offences
-Waiting for new offences
+    PREPARING TO SEND THE OFFENCE : {"security_category_count":1,"source_count":1,"event_count":1,"description":"The vechile has exceeded the speed limit of 100kmph\n","offense_type":2,"local_destination_count":1,"follow_up":false,"domain_id":0,"inactive":true,"protected":false,"closing_user":null,"offense_source":"speeding violation","source_address_ids":[2],"credibility":3,"magnitude":3,"source_network":"Net-xx-xxx-xxx.Net_192_168_0_0","id":5,"categories":["Unknown"],"closing_reason_id":null,"device_count":1,"assigned_to":null,"severity":5,"local_destination_address_ids":[2],"close_time":null,"policy_category_count":0,"relevance":5,"destination_networks":["Net-xx-xxx-xxx.Net_192_168_0_0"],"remote_destination_count":0,"start_time":1542863188789,"flow_count":0,"last_updated_time":1542863188789,"category_count":1,"username_count":0,"status":"OPEN"}
+    Response Code : 200
+    Incident Response Code : 200
+    SENT THE OFFENCE WITH ID : 1 TO RESILIENT
+    INCIDENT CREATED IN  ORG : abc ( ORG ID : 206) WITH ID : 2230
+    Successfully sent offence id 1 to resilient
+    Offence ID's that are sent to resilient : [1]
+    Waiting for new offences
+    Waiting for new offences
+    Waiting for new offences
    ```
    
-Now just to make sure our application runs dynamically lets send a Location based offence. After the Location based offence is detected in QRadar,the output looks like:
+Now just to make sure our application runs dynamically let's send a location based offence. After the Location based offence is detected in QRadar,the output looks like:
 
-   Output:
+   Output on terminal:
    ```
 >>>Enter your QRadar username:
 admin
