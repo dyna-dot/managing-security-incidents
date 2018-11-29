@@ -61,8 +61,9 @@ This code pattern will demonstrate an integration between IBM Resilient IRP and 
 
 1. Download the code from GitHub
 2. Create organizations on IBM Resilient
-3. Build the QRadar-Resilient Integration Application using Maven
-4. Deploy and Run the Application locally
+3. Create rules to detect offences on QRadar
+4. Build the QRadar-Resilient Integration Application using Maven
+5. Deploy and Run the Application locally
 
 # Components and services
 
