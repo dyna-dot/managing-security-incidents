@@ -138,10 +138,10 @@ public class QRadar {
 			String id = jsonObj.get("id").toString();
 			if (!ids.contains(id)) {
 				if (jsonObj.get("status").toString().equals("OPEN")) {
-					new_ids.add(id);
 					// You can add your own offence source below
 					if (jsonObj.get("offense_source").toString().equals("speeding violation")
 							|| jsonObj.get("offense_source").toString().equals("wrong location")) {
+						new_ids.add(id);
 						System.out.println("PREPARING TO SEND THE OFFENCE : " + jsonObj);
 
 						r.set_org(email, resilient_password, host_resilient);
