@@ -208,7 +208,7 @@ To work with the QRadar-Resilient Integration Application, perform the following
    ```
    Fill in your QRadar Hostname/IP Address and enter 1 to sent speed related offence,
   
-   Output: 
+   ***Output:***
 
       ``` 
       >>>Enter the QRadar Hostname/IP Address
@@ -225,7 +225,7 @@ To work with the QRadar-Resilient Integration Application, perform the following
    ```
    java -cp QRadar-Resilient.jar org.app.integrate.Task
    ```
-   Output on terminal: 
+   ***Output on terminal:*** 
    
    ```
     >>>Enter your QRadar username:
@@ -252,10 +252,13 @@ To work with the QRadar-Resilient Integration Application, perform the following
     Waiting for new offences
     Waiting for new offences
    ```
+   ***Output on Resilient:***
    
-Now just to make sure our application runs dynamically let's send a location based offence. After the Location based offence is detected in QRadar,the output looks like:
+   ![](doc/source/images/speed_incident.png)
+    
+  Similarly let's send a location based offence using the `offences.jar` file and check if the QRadar-Resilient Integration application picks it up dynamically. After the Location based offence is detected in QRadar,the output looks like:
 
-   Output on terminal:
+   ***Output on terminal:***
    ```
 >>>Enter your QRadar username:
 admin
@@ -290,6 +293,12 @@ Successfully sent offence id 2 to resilient
 Offence ID's that are sent to resilient : [2,1]
 Waiting for new offences
    ```
+  Click on the dropdown in the right corner on the resilient console and change the organization to `xyz` and view location related incident that has been created.
+  
+  ***Output on Resilient:***
+   
+  ![](doc/source/images/location_incident.png)
+   
 This Application works dynamically.It checks for new offences at regular intervals.If a new offence is detected, it will be sent to its respective Resilient organization.
 
 Watch the [video](#watch-the-video) for the live demo.
