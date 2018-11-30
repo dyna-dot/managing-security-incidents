@@ -10,6 +10,7 @@ Integrate IBM Resilient Incident Response Platform (IRP) with IBM QRadar Securit
 
 * Rahul Reddy Ravipally raravi86@in.ibm.com
 * Balaji Kadambi bkadambi@in.ibm.com
+* Manjula Hosurmath mhosurma@in.ibm.com
 
 # URLs
 
