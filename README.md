@@ -4,7 +4,7 @@ In this Code Pattern, we will be integrating `IBM Resilient Incident Response Pl
 In this Code Pattern, we will showcase a methodology in which we will be creating `speed` and `location` related offences on IBM QRadar which will later be sent to `abc` and `xyz` organization on IBM Resilient Incident Response Platform respectively, using our `QRadar-Resilient Integration` Application.
 
 
-When the reader has completed this Code Pattern, they will understand how to:
+When the readers have completed this Code Pattern, they will understand how to:
 
 * Access the offences from IBM QRadar using Rest API.
 * Create incidents on IBM Resilient using Rest API.
@@ -300,8 +300,6 @@ Waiting for new offences
   ![](doc/source/images/location_incident.png)
    
 This Application works dynamically.It checks for new offences at regular intervals.If a new offence is detected, it will be sent to its respective Resilient organization.
-
-Watch the [video](#watch-the-video) for the live demo.
   
 Please check [`Java/integrate/src/main/java/org/app/integrate/Resilient.java`](Java/integrate/src/main/java/org/app/integrate/Resilient.java) and [`Java/integrate/src/main/java/org/app/integrate/QRadar.java`](Java/integrate/src/main/java/org/app/integrate/QRadar.java) to add a new offence source and its respective Resilient organization.
   
