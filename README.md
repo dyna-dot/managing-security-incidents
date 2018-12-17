@@ -22,6 +22,7 @@ When the readers have completed this Code Pattern, they will understand how to:
 
 <!--Optionally, update this section when the video is created-->
 # Watch the Video
+[![](https://img.youtube.com/vi/a5DKXDZ_aOs/1.jpg)](https://youtu.be/a5DKXDZ_aOs)
 
 ## Pre-requisites
 
