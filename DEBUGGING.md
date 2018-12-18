@@ -19,7 +19,7 @@ Caused by: sun.security.provider.certpath.SunCertPathBuilderException:
  
  So inorder to solve this, please follow the below steps:
  
-  * Download the file from 
+  * Download the code from this [link](https://github.com/azakordonets/InstallCert/blob/master/src/InstallCert.java) and name it as `InstallCert.java`.
   * Open a command terminal and navigate to the `InstallCert.java` on your local system and compile using `javac InstallCert.java`.
   * Now get a self signed certificate for QRadar using the command `java InstallCert [YOUR-QRADAR-IPADDRESS]`
     ```
