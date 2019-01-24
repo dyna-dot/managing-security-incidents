@@ -16,12 +16,11 @@ Integrate IBM Resilient Incident Response Platform (IRP) with IBM QRadar Securit
 
 ### Github repo
 
-* [Integrating Resilient IRP with IBM QRadar SIEM using Java Rest API's](https://github.ibm.com/raravi86/Integration)
+* [Integrating Resilient IRP with IBM QRadar SIEM using Java Rest API's](https://github.com/IBM/managing-security-incidents)
 
 ### Other URLs
 
-* Video URL
-* Demo URL
+* [Video](https://youtu.be/a5DKXDZ_aOs)
 
 # Summary
 
