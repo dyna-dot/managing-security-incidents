@@ -302,7 +302,7 @@ Waiting for new offences
    
 This Application works dynamically.It checks for new offences at regular intervals.If a new offence is detected, it will be sent to its respective Resilient organization.
   
-Please check [`Java/integrate/src/main/java/org/app/integrate/Resilient.java`](Java/integrate/src/main/java/org/app/integrate/Resilient.java) and [`Java/integrate/src/main/java/org/app/integrate/QRadar.java`](Java/integrate/src/main/java/org/app/integrate/QRadar.java) to add a new offence source and its respective Resilient organization.
+Please check [`Java/integrate/src/main/java/org/example/integrate/Resilient.java`](Java/integrate/src/main/java/org/example/integrate/Resilient.java) and [`Java/integrate/src/main/java/org/app/integrate/QRadar.java`](Java/integrate/src/main/java/org/app/integrate/QRadar.java) to add a new offence source and its respective Resilient organization.
   
 
 ## Troubleshooting
