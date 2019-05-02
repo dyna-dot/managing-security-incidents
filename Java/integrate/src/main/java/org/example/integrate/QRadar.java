@@ -10,7 +10,7 @@
  *  See the License for the specific language governing permissions and 
  *  limitations under the License.
  */
-package org.app.integrate;
+package org.example.integrate;
 
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
