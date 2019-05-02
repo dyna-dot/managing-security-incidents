@@ -205,7 +205,7 @@ To work with the QRadar-Resilient Integration Application, perform the following
  * First let us create a speed related offence on QRadar,by execute the following command from the target directory(directory where the offences.jar file is located).
  
    ```
-   java -cp offences.jar org.app.offences.SendOffences
+   java -cp offences.jar org.example.offences.SendOffences
    ```
    Fill in your QRadar Hostname/IP Address and enter 1 to sent speed related offence,
   
@@ -224,7 +224,7 @@ To work with the QRadar-Resilient Integration Application, perform the following
  * To deploy and run the QRadar-Resilient Integration application, execute the following command from the target directory(directory where the QRadar-Resilient.jar file is located).
 
    ```
-   java -cp QRadar-Resilient.jar org.app.integrate.Task
+   java -cp QRadar-Resilient.jar org.example.integrate.Task
    ```
    ***Output on terminal:*** 
    
