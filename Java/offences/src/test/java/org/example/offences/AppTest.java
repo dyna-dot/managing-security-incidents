@@ -1,4 +1,4 @@
-package org.app.offences;
+package org.example.offences;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
